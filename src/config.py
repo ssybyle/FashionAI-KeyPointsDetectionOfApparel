@@ -5,8 +5,8 @@ class Config:
 
     def __init__(self, clothes):
         # custom configs
-        self.proj_path = '/home/storage/lsy/fashion/'
-        self.data_path = self.proj_path + 'FashionAI_Keypoint_Detection/'
+        self.proj_path = '/content'
+        self.data_path = '/content/DATA_DIR'
         self.batch_size_per_gpu = 6
         self.workers = 10
         self.gpus = '0,1,2,3' # CUDA_DEVICES
