@@ -36,7 +36,7 @@ def compute_keypoints(config, img0, net, encoder, doflip=False):
     pad_imgs = np.zeros([1, 3, config.img_max_size, config.img_max_size], dtype=np.float32)
     pad_imgs[0, :, :img_h2, :img_w2] = img
     data = torch.from_numpy(pad_imgs)
-    data = data.cuda(async=True)
+    data = data.cuda(non_blocking=True)
     _, hm_pred = net(data)
     hm_pred = F.relu(hm_pred, False)
     hm_pred = hm_pred[0].data.cpu().numpy()
