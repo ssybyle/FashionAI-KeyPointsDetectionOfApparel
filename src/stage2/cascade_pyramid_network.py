@@ -70,7 +70,7 @@ class GlobalNet(nn.Module):
 
     def _upsample_add(self, x, y):
         _,_,H,W = y.size()
-        return F.upsample(x, size=(H,W), mode='bilinear') + y
+        return F.interpolate(x, size=(H,W), mode='bilinear') + y
 
     def forward(self, x):
         # Bottom-up
