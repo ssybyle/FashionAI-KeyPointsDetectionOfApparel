@@ -85,6 +85,7 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
     for idx in tqdm(range(val_kpda.size())):
+        print(img_path)
         img_path = val_kpda.get_image_path(idx)
         kpts = val_kpda.get_keypoints(idx)
         img0 = cv2.imread(img_path)  #X
@@ -128,13 +129,7 @@ if __name__ == '__main__':
             cv2.imwrite(config.proj_path + '/tmp/{0}{1}.png'.format(config.clothes, idx), kp_img)
 
         left, right = config.datum
-        if len(kpts) > 0:
-            x1, y1, v1 = kpts[left]
-            print({idx})
-        else:
-            print(f"Skipping image {idx} due to empty keypoints")
-            continue  # Passe à l'itération suivante
-
+        x1, y1, v1 = kpts[left]
         x2, y2, v2 = kpts[right]
         if v1 == -1 or v2 == -1:
             continue
