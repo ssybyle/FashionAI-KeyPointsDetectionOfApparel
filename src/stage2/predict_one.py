@@ -62,9 +62,8 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--clothes', help='specify the clothing type', default='outwear')
     parser.add_argument('-g', '--gpu', help='cuda device to use', default='0')
     parser.add_argument('-m', '--model', help='specify the model', default=None)
-    parser.add_argument('-v', '--visual', help='whether visualize result', default=False)
-    parser.add_argument('--vis', action='store_true', help="Enable visualization")
-
+    parser.add_argument('-v', '--vis', '--visual', help='whether visualize result', default=False)
+    
     args = parser.parse_args(sys.argv[1:])
 
     config = Config(args.clothes)
