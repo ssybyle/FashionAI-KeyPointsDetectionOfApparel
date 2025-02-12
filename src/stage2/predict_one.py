@@ -127,6 +127,7 @@ if __name__ == '__main__':
         if args.vis:
             kp_img = draw_keypoints(img0, keypoints)
             cv2.imwrite(config.proj_path + '/tmp/{0}{1}.png'.format(config.clothes, idx), kp_img)
+            cv2.imshow(f"Keypoints for {idx}", kp_img)
 
         left, right = config.datum
         x1, y1, v1 = kpts[left]
