@@ -65,7 +65,7 @@ class KPDA():
     def get_keypoints(self, image_index):
         row = self.anno_df.iloc[image_index]
         locs = []
-        for key, item in row.iteritems():
+        for key, item in row.items():
             if key in self.config.keypoints[self.config.clothes]:
                 loc = [int(x) for x in item.split('_')]
                 locs.append(loc)
