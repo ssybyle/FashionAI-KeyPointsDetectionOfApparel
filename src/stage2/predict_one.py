@@ -128,7 +128,12 @@ if __name__ == '__main__':
             cv2.imwrite(config.proj_path + '/tmp/{0}{1}.png'.format(config.clothes, idx), kp_img)
 
         left, right = config.datum
-        x1, y1, v1 = kpts[left]
+        if len(kpts) > 0:
+            x1, y1, v1 = kpts[left]
+        else:
+            print(f"Skipping image {idx} due to empty keypoints")
+            continue  # Passe à l'itération suivante
+
         x2, y2, v2 = kpts[right]
         if v1 == -1 or v2 == -1:
             continue
