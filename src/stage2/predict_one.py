@@ -72,7 +72,7 @@ if __name__ == '__main__':
     print('Validation sample number: %d' % val_kpda.size())
     net = CascadePyramidNet(config)
     checkpoint = torch.load(args.model)  # must before cuda
-    net.load_state_dict(checkpoint['state_dict'])
+    net.load_state_dict(checkpoint)
     net = net.cuda()
     cudnn.benchmark = True
     net = DataParallel(net)
