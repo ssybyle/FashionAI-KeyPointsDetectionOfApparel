@@ -26,8 +26,7 @@ from src.utils import draw_heatmap, draw_keypoints
 from src.stage2.keypoint_encoder import KeypointEncoder
 from src.utils import normalized_error
 
-import cv2
-import matplotlib.pyplot as plt
+from IPython.display import display, Image
 
 
 def compute_keypoints(config, img0, net, encoder, doflip=False):
@@ -128,12 +127,10 @@ if __name__ == '__main__':
         # keypoints2[:, :2] = (keypoints[:, :2] + keypoints_flip[:, :2]) // 2
 # ----------------------------------------------------------------------------------------------------------------------
         if args.vis:
+            print("Affiche l'image :")
             kp_img = draw_keypoints(img0, keypoints)
             cv2.imwrite(config.proj_path + '/tmp/{0}{1}.png'.format(config.clothes, idx), kp_img)
-            kp_img_rgb = cv2.cvtColor(kp_img, cv2.COLOR_BGR2RGB)
-            plt.imshow(kp_img_rgb)
-            plt.axis('off')  # Pour ne pas afficher les axes
-            plt.show()
+            display(Image(filename=config.proj_path + "/tmp/{0}{1}.png".format(config.clothes, idx)))
 
         left, right = config.datum
         x1, y1, v1 = kpts[left]
