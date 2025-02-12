@@ -130,6 +130,7 @@ if __name__ == '__main__':
         left, right = config.datum
         if len(kpts) > 0:
             x1, y1, v1 = kpts[left]
+            print({idx})
         else:
             print(f"Skipping image {idx} due to empty keypoints")
             continue  # Passe à l'itération suivante
