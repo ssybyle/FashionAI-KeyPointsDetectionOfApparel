@@ -50,7 +50,7 @@ def train(data_loader, net, loss, optimizer, lr):
 
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
-        data = data.cuda(async=True)
+        data = data.cuda(non_blocking=True)
         heatmaps = heatmaps.cuda(async=True)
         vismaps = vismaps.cuda(async=True)
         heat_pred1, heat_pred2 = net(data)
