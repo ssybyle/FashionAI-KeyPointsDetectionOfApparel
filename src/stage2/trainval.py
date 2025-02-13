@@ -51,8 +51,8 @@ def train(data_loader, net, loss, optimizer, lr):
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
         data = data.cuda(non_blocking=True)
-        heatmaps = heatmaps.cuda(async=True)
-        vismaps = vismaps.cuda(async=True)
+        heatmaps = heatmaps.cuda(non_blocking=True)
+        vismaps = vismaps.cuda(non_blocking=True)
         heat_pred1, heat_pred2 = net(data)
         loss_output = loss(heatmaps, heat_pred1, heat_pred2, vismaps)
         optimizer.zero_grad()
@@ -69,9 +69,9 @@ def validate(data_loader, net, loss):
     net.eval()
     metrics = []
     for i, (data, heatmaps, vismaps) in enumerate(data_loader):
-        data = data.cuda(async=True)
-        heatmaps = heatmaps.cuda(async=True)
-        vismaps = vismaps.cuda(async=True)
+        data = data.cuda(non_blocking=True)
+        heatmaps = heatmaps.cuda(non_blocking=True)
+        vismaps = vismaps.cuda(non_blocking=True)
         heat_pred1, heat_pred2 = net(data)
         loss_output = loss(heatmaps, heat_pred1, heat_pred2, vismaps)
         metrics.append([loss_output[0].item(), loss_output[1].item(), loss_output[2].item()])
