@@ -9,7 +9,9 @@ from torch.nn import DataParallel
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import sys
-sys.path.append('/home/lsy/Fashion/')
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
 
 from src import pytorch_utils
 from src.kpda_parser import KPDA
