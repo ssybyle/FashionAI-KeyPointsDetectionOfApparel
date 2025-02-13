@@ -24,18 +24,11 @@ def getFreeId():
     return gpus
 
 def setgpu(gpuinput):
-    freeids = getFreeId()
-    if gpuinput=='all':
-        gpus = freeids
-    else:
-        gpus = gpuinput
-        invalid_gpus = [g for g in gpus.split(',') if g not in freeids]
-        if invalid_gpus:
-            raise ValueError(f"GPU(s) {', '.join(invalid_gpus)} are being used")
-
-    print('using gpu '+gpus)
-    os.environ['CUDA_VISIBLE_DEVICES']=gpus
+    gpus = gpuinput if gpuinput else '0'  # Par défaut, GPU 0 sur Colab
+    os.environ['CUDA_VISIBLE_DEVICES'] = gpus
+    print(f'Using GPU(s): {gpus}')
     return len(gpus.split(','))
+
 
 class Logger(object):
     def __init__(self,logfile):
