@@ -83,9 +83,7 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
 
-    for idx in range(val_kpda.size()):
-        print(val_kpda.get_image_path(idx))
-
+    print(f"Nombre total d'images dans val_kpda : {val_kpda.size()}")
 
     for idx in tqdm(range(val_kpda.size())):
         img_path = val_kpda.get_image_path(idx)
