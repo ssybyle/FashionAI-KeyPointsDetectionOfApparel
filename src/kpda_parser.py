@@ -15,25 +15,25 @@ class KPDA():
             anno_df = pd.read_csv(data_dir + 'fashionAI_key_points_test_b_answer_20180426.csv')
             anno_df['image_path'] = data_dir + anno_df['image_id']
         else:
-            data_dir0 = data_dir + 'wu_train/'
-            anno_df0 = pd.read_csv(data_dir0 + 'Annotations/annotations.csv')
-            anno_df0['image_path'] = data_dir0 + anno_df0['image_id']
+            # data_dir0 = data_dir + 'wu_train/'
+            # anno_df0 = pd.read_csv(data_dir0 + 'Annotations/annotations.csv')
+            # anno_df0['image_path'] = data_dir0 + anno_df0['image_id']
             data_dir1 = data_dir + 'r1_train/'
             anno_df1 = pd.read_csv(data_dir1 + 'Annotations/train.csv')
             anno_df1['image_path'] = data_dir1 + anno_df1['image_id']
-            data_dir2 = data_dir + 'r1_test_a/'
-            anno_df2 = pd.read_csv(data_dir2 + 'fashionAI_key_points_test_a_answer_20180426.csv')
-            anno_df2['image_path'] = data_dir2 + anno_df2['image_id']
+            # data_dir2 = data_dir + 'r1_test_a/'
+            # anno_df2 = pd.read_csv(data_dir2 + 'fashionAI_key_points_test_a_answer_20180426.csv')
+            # anno_df2['image_path'] = data_dir2 + anno_df2['image_id']
             # anno_df = pd.concat([anno_df0, anno_df1, anno_df2])
-
-            data_dir3 = data_dir + 'r1_test_b/'
-            anno_df3 = pd.read_csv(data_dir3 + 'fashionAI_key_points_test_b_answer_20180426.csv')
-            anno_df3['image_path'] = data_dir3 + anno_df3['image_id']
-            anno_df3_train, anno_df3_val = train_test_split(anno_df3, test_size=0.2, random_state=42)
-            if train_val == 'train':
-                anno_df = pd.concat([anno_df0, anno_df1, anno_df2, anno_df3_train])
-            else:
-                anno_df = anno_df3_val
+            anno_df = pd.concat([anno_df1])
+            # data_dir3 = data_dir + 'r1_test_b/'
+            # anno_df3 = pd.read_csv(data_dir3 + 'fashionAI_key_points_test_b_answer_20180426.csv')
+            # anno_df3['image_path'] = data_dir3 + anno_df3['image_id']
+            #anno_df3_train, anno_df3_val = train_test_split(anno_df3, test_size=0.2, random_state=42)
+            # if train_val == 'train':
+                # anno_df = pd.concat([anno_df0, anno_df1, anno_df2, anno_df3_train])
+            # else:
+            #     anno_df = anno_df3_val
 
 
         self.anno_df = anno_df[anno_df['image_category'] == self.config.clothes]
