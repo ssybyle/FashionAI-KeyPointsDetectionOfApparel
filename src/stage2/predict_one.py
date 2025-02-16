@@ -82,6 +82,11 @@ if __name__ == '__main__':
     net.eval()
     encoder = KeypointEncoder()
     nes = []
+
+    for idx in range(val_kpda.size()):
+        print(val_kpda.get_image_path(idx))
+
+
     for idx in tqdm(range(val_kpda.size())):
         img_path = val_kpda.get_image_path(idx)
         print(img_path)
