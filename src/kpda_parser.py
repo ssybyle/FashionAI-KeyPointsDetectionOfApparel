@@ -10,10 +10,10 @@ class KPDA():
             data_dir += 'r2_test_b/'
             anno_df = pd.read_csv(data_dir + 'test.csv')
             anno_df['image_path'] = data_dir + anno_df['image_id']
-        # elif train_val == 'val':
-        #     data_dir += 'r1_test_b/'
-        #     anno_df = pd.read_csv(data_dir + 'fashionAI_key_points_test_b_answer_20180426.csv')
-        #     anno_df['image_path'] = data_dir + anno_df['image_id']
+        elif train_val == 'val':
+            data_dir += 'r1_test_b/'
+            anno_df = pd.read_csv(data_dir + 'fashionAI_key_points_test_b_answer_20180426.csv')
+            anno_df['image_path'] = data_dir + anno_df['image_id']
         else:
             data_dir0 = data_dir + 'wu_train/'
             anno_df0 = pd.read_csv(data_dir0 + 'Annotations/annotations.csv')
