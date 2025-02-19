@@ -80,7 +80,7 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
 
-    image_files = [f for f in os.listdir(args.directory) if f.endswith(('jpg', 'png', 'jpeg'))]
+    image_files = [f for f in os.listdir('/content/drive/MyDrive/DATA_DIR/r1_test_b/Images/'+args.clothes) if f.endswith(('jpg', 'png', 'jpeg'))]
 
     for idx in tqdm(image_files):
         img_path = os.path.join(args.directory, img_file)
