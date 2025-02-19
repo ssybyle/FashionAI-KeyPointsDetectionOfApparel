@@ -124,8 +124,7 @@ if __name__ == '__main__':
         if args.vis:
             print("Affiche l'image :")
             kp_img = draw_keypoints(img0, keypoints)
-            output_path = os.path.join('/content/drive/MyDrive/DATA_DIR/r1_test_b/Images/'+args.clothes, f'keypoints_{img_file}')
-            cv2.imwrite(output_path, kp_img)
+            cv2.imwrite('/content/tmp/'+f'keypoints_{img_file}', kp_img)
 
 
 
