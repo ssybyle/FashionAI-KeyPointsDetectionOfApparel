@@ -70,9 +70,6 @@ if __name__ == '__main__':
 
     config = Config(args.clothes)
     n_gpu = pytorch_utils.setgpu(args.gpu)
-    val_kpda = KPDA(config, config.data_path, 'val')
-    print('Testing: ' + config.clothes)
-    print('Validation sample number: %d' % val_kpda.size())
     net = CascadePyramidNet(config)
     checkpoint = torch.load(args.model)  # must before cuda
     net.load_state_dict(checkpoint['state_dict'])
@@ -83,8 +80,10 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
 
-    for idx in tqdm(range(val_kpda.size())):
-        img_path = val_kpda.get_image_path(idx)
+    image_files = [f for f in os.listdir(args.directory) if f.endswith(('jpg', 'png', 'jpeg'))]
+
+    for idx in tqdm(image_files):
+        img_path = os.path.join(args.directory, img_file)
         print(img_path)
         img0 = cv2.imread(img_path)  #X
         img0_flip = cv2.flip(img0, 1)
