@@ -28,7 +28,7 @@ from src.utils import normalized_error
 
 from IPython.display import display, Image
 
-def resize_image(img, max_size=1000):
+def resize_image(img, max_size=800):
     img_h, img_w = img.shape[:2]
     if img_h > max_size or img_w > max_size:
         scale = max_size / max(img_w, img_h)
