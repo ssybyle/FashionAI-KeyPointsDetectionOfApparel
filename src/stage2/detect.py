@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
         #CREATION FICHIER TEXTE
         file = open('/content/'+img_file+'.txt', "x")
-        file.write(keypoints)
+        file.write(str(keypoints))
         file.close()
 # ----------------------------------------------------------------------------------------------------------------------
         # keypoints = compute_keypoints(config, img0, net, encoder)
