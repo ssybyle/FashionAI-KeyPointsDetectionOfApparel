@@ -1,1 +1,0 @@
-# use Inception-Resnet V2 as backbone network

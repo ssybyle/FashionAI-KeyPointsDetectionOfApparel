@@ -121,6 +121,11 @@ if __name__ == '__main__':
             hm_pred2 = compute_keypoints(config, img0_flip, net, encoder, doflip=True) #* pad_mask
         x, y = encoder.decode_np(hm_pred + hm_pred2, scale, config.hm_stride, (img_w/2, img_h/2), method='maxoffset')
         keypoints = np.stack([x, y, np.ones(x.shape)], axis=1).astype(np.int16)
+
+        #CREATION FICHIER TEXTE
+        file = open('/content/'+img_file+'.txt', "x")
+        file.write(keypoints)
+        file.close()
 # ----------------------------------------------------------------------------------------------------------------------
         # keypoints = compute_keypoints(config, img0, net, encoder)
         # keypoints_flip = compute_keypoints(config, img0_flip, net, encoder)
