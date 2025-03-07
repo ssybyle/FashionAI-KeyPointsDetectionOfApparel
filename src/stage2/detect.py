@@ -115,7 +115,7 @@ if __name__ == '__main__':
         #CREATION FICHIER TEXTE
         if (os.path.exists('/content/'+img_file+'.txt')):
             os.remove('/content/'+img_file+'.txt')
-            os.remove('/content'+img_file)
+            os.remove('/content/'+img_file)
         file = open('/content/'+img_file+'.txt', "x")
         file.write(str(keypoints))
         file.close()
