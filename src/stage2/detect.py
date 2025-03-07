@@ -28,15 +28,6 @@ from src.utils import normalized_error
 
 from IPython.display import display, Image
 
-def resize_image(img, max_size=600):
-    img_h, img_w = img.shape[:2]
-    if img_h > max_size or img_w > max_size:
-        scale = max_size / max(img_w, img_h)
-        new_w = int(img_w * scale)
-        new_h = int(img_h * scale)
-        img = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_AREA)
-    return img
-
 def compute_keypoints(config, img0, net, encoder, doflip=False):
     img_h, img_w, _ = img0.shape
     # min size resizing
@@ -94,7 +85,6 @@ if __name__ == '__main__':
         img_path = os.path.join('/content/drive/MyDrive/DATA_DIR/r1_test_b/Images/'+args.clothes, img_file)
         print(img_path)
         img0 = cv2.imread(img_path)  #X
-        img0 = resize_image(img0)
         img0_flip = cv2.flip(img0, 1)
         img_h, img_w, _ = img0.shape
 
