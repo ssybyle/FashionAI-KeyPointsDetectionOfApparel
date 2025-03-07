@@ -11,7 +11,7 @@ class Config:
         self.workers = 2
         self.gpus = '0' # CUDA_DEVICES
         self.base_lr = 1e-3  # learning rate
-        self.epochs = 100
+        self.epochs = 200
 
 
         self.clothes = clothes
