@@ -113,6 +113,8 @@ if __name__ == '__main__':
         keypoints = np.stack([x, y, np.ones(x.shape)], axis=1).astype(np.int16)
 
         #CREATION FICHIER TEXTE
+        if (os.exists('/content/'+img_file+'.txt')):
+            os.remove('/content/'+img_file+'.txt')
         file = open('/content/'+img_file+'.txt', "x")
         file.write(str(keypoints))
         file.close()
