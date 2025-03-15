@@ -74,7 +74,7 @@ if __name__ == '__main__':
     print('Testing: ' + config.clothes)
     print('Validation sample number: %d' % val_kpda.size())
     net = CascadePyramidNet(config)
-    checkpoint = torch.load(args.model)  # must before cuda
+    checkpoint = torch.load(args.model, weights_only=False)  # must before cuda
     net.load_state_dict(checkpoint['state_dict'])
     net = net.cuda()
     cudnn.benchmark = True
