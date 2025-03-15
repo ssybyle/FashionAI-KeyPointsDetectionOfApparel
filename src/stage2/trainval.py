@@ -113,7 +113,7 @@ if __name__ == '__main__':
     best_val_loss = float('inf')
     log_mode = 'w'
     if args.resume is not None:
-        checkpoint = torch.load(args.resume)
+        checkpoint = torch.load(args.resume, weihts_only=False)
         start_epoch = checkpoint['epoch'] + 1
         if checkpoint['lr']:
             lr = checkpoint['lr']
