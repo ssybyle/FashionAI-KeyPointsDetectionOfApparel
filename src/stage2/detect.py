@@ -81,10 +81,10 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
 
-    image_files = [f for f in args.clothes if f.endswith(('jpg', 'png', 'jpeg'))]
+    image_files = [f for f in args.source if f.endswith(('jpg', 'png', 'jpeg'))]
 
     for img_file in tqdm(image_files):
-        img_path = os.path.join(args.clothes, img_file)
+        img_path = os.path.join(args.source, img_file)
         print(img_path)
         img0 = cv2.imread(img_path)  #X
         img0_flip = cv2.flip(img0, 1)
