@@ -42,10 +42,11 @@ def compute_keypoints(config, img0, net, encoder, doflip=False):
     pad_imgs = np.zeros([1, 3, config.img_max_size, config.img_max_size], dtype=np.float32)
     pad_imgs[0, :, :img_h2, :img_w2] = img
     data = torch.from_numpy(pad_imgs)
-    data = data.cuda(non_blocking=True)
+    #data = data.cuda(non_blocking=True)
     _, hm_pred = net(data)
     hm_pred = F.relu(hm_pred, False)
-    hm_pred = hm_pred[0].data.cpu().numpy()
+    #hm_pred = hm_pred[0].data.cpu().numpy()
+    hm_pred = hm_pred[0].data.numpy()
     if doflip:
         a = np.zeros_like(hm_pred)
         a[:, :, :img_w2 // config.hm_stride] = np.flip(hm_pred[:, :, :img_w2 // config.hm_stride], 2)
@@ -70,11 +71,11 @@ if __name__ == '__main__':
     config = Config(args.clothes)
     n_gpu = pytorch_utils.setgpu(args.gpu)
     net = CascadePyramidNet(config)
-    checkpoint = torch.load(args.model, weights_only=False)  # must before cuda
+    checkpoint = torch.load(args.model, weights_only=False, map_location=torch.device('cpu'))  # must before cuda
     net.load_state_dict(checkpoint['state_dict'])
-    net = net.cuda()
-    cudnn.benchmark = True
-    net = DataParallel(net)
+    #net = net.cuda()
+    #cudnn.benchmark = True
+    #net = DataParallel(net)
     net.eval()
     encoder = KeypointEncoder()
     nes = []
