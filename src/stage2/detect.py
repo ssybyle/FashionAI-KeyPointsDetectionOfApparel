@@ -70,7 +70,7 @@ if __name__ == '__main__':
     config = Config(args.clothes)
     n_gpu = pytorch_utils.setgpu(args.gpu)
     net = CascadePyramidNet(config)
-    checkpoint = torch.load(args.model)  # must before cuda
+    checkpoint = torch.load(args.model, weights_only=False)  # must before cuda
     net.load_state_dict(checkpoint['state_dict'])
     net = net.cuda()
     cudnn.benchmark = True
