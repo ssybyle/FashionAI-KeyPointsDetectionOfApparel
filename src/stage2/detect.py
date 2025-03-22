@@ -82,7 +82,6 @@ if __name__ == '__main__':
     nes = []
 
     image_files = [f for f in os.listdir(args.source) if f.endswith(('jpg', 'png', 'jpeg'))]
-    print(image_files)
 
     for img_file in tqdm(image_files):
         img_path = os.path.join(args.source, img_file)
