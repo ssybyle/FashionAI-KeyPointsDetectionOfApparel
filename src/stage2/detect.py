@@ -66,6 +66,7 @@ if __name__ == '__main__':
     parser.add_argument('-m', '--model', help='specify the model', default=None)
     parser.add_argument('-v', '--vis', '--visual', help='whether visualize result', default=False)
     parser.add_argument('-s', '--source', help='specify source directory', default=None)
+    parser.add_argument('-o', '--output', help='specify output directory', default=None)
     
     args = parser.parse_args(sys.argv[1:])
 
@@ -115,9 +116,9 @@ if __name__ == '__main__':
         keypoints = np.stack([x, y, np.ones(x.shape)], axis=1).astype(np.int16)
 
         #CREATION FICHIER TEXTE
-        if (os.path.exists('/content/'+img_file+'.txt')):
-            os.remove('/content/'+img_file+'.txt')
-        file = open('/content/'+img_file+'.txt', "x")
+        if (os.path.exists(args.output+img_file+'.txt')):
+            os.remove(args.output+img_file+'.txt')
+        file = open(args.output+img_file+'.txt', "x")
         file.write(str(keypoints))
         file.close()
 # ----------------------------------------------------------------------------------------------------------------------
