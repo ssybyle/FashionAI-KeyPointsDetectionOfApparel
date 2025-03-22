@@ -72,7 +72,7 @@ if __name__ == '__main__':
     net = CascadePyramidNet(config)
     checkpoint = torch.load(args.model, weights_only=False)  # must before cuda
     net.load_state_dict(checkpoint['state_dict'])
-    #net = net.cuda()
+    net = net.cuda()
     cudnn.benchmark = True
     net = DataParallel(net)
     net.eval()
