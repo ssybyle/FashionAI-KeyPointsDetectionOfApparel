@@ -81,9 +81,8 @@ if __name__ == '__main__':
     encoder = KeypointEncoder()
     nes = []
 
-    print(args.source)
-
     image_files = [f for f in args.source if f.endswith(('jpg', 'png', 'jpeg'))]
+    print(image_files)
 
     for img_file in tqdm(image_files):
         img_path = os.path.join(args.source, img_file)
