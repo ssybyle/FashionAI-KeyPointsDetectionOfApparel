@@ -118,6 +118,7 @@ if __name__ == '__main__':
         #CREATION FICHIER TEXTE
         if (os.path.exists(os.path.join(args.output + img_file + '.txt'))):
             os.remove(os.path.join(args.output + img_file + '.txt'))
+        print(os.path.join(args.output + img_file + '.txt'))
         file = open(os.path.join(args.output + img_file + '.txt'), "x")
         file.write(str(keypoints))
         file.close()
