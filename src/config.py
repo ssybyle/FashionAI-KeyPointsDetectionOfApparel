@@ -6,7 +6,7 @@ class Config:
     def __init__(self, clothes):
         # custom configs
         self.proj_path = '/content/'
-        self.data_path = '/content/drive/MyDrive/DATA_DIR/'
+        self.data_path = '/content/drive/MyDrive/FITSIZE/DATA_DIR/'
         self.batch_size_per_gpu = 6
         self.workers = 2
         self.gpus = '0' # CUDA_DEVICES
